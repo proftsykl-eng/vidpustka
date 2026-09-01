@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Inter", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
+}
+
+/* Custom Table styling for HTML2Canvas and Geometric Balance compatibility */
+.vacations-table {
+  border-collapse: collapse;
+  width: 100%;
+  background-color: #ffffff;
+}
+
+.vacations-table th, .vacations-table td {
+  border: 1px solid #bdc3c7;
+  text-align: center;
+  padding: 4px;
+  box-sizing: border-box;
+}
+
+.vacations-table th {
+  background-color: #2c3e50;
+  color: #ffffff;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.weekend-cell {
+  background-color: #ecf0f1 !important; /* light gray-blue background */
+}
+
+.vacation-badge {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  line-height: 16px;
+  border-radius: 50%;
+  text-align: center;
+  color: white;
+  font-size: 8px;
+  font-weight: 700;
+  margin: 1px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+  vertical-align: middle;
+}
+
+.vacation-badge.used {
+  opacity: 0.35;
+}
