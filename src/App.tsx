@@ -512,7 +512,7 @@ export default function App() {
       </header>
 
       {/* Main Body Grid */}
-      <main className="max-w-7xl w-full mx-auto px-4 py-6 md:px-6 flex-1">
+      <main className="max-w-[1700px] w-full mx-auto px-3 sm:px-4 md:px-6 py-6 flex-1">
         {/* Alerts & Messages */}
         {successMessage && (
           <div className="mb-6 p-4 bg-emerald-50 border-l-4 border-[#27ae60] text-[#27ae60] rounded shadow-sm flex items-center gap-3 animate-fade-in">
@@ -532,7 +532,7 @@ export default function App() {
         <div className="flex flex-col lg:flex-row gap-6">
           
           {/* LEFT SIDEBAR: Controls & Data Management (Fixed 340px width on desktop) */}
-          <div className="w-full lg:w-[350px] flex-shrink-0 flex flex-col gap-6">
+          <div className="w-full lg:w-[320px] xl:w-[350px] flex-shrink-0 flex flex-col gap-6">
             
             {/* 1. Global Controls */}
             <div className="bg-white border border-[#dcdfe0] rounded-sm p-4 shadow-sm">
@@ -1081,8 +1081,8 @@ export default function App() {
           </div>
 
           {/* RIGHT VIEW: Large Interactive Calendar (12 Months x 31 Days Grid) */}
-          <div className="flex-1 overflow-x-auto">
-            <div className="bg-white border border-[#dcdfe0] p-5 min-w-[980px] shadow-sm rounded-sm" id="calendar-container">
+          <div className="flex-1 min-w-0 overflow-x-auto">
+            <div className="bg-white border border-[#dcdfe0] p-3 sm:p-5 w-full min-w-[720px] lg:min-w-0 shadow-sm rounded-sm" id="calendar-container">
               
               {/* Calendar Control Area (Hidden during image export) */}
               <div className="flex items-center justify-between border-b border-[#ecf0f1] pb-4 mb-4">
@@ -1116,7 +1116,7 @@ export default function App() {
               </div>
 
               {/* Printable Area - Rendered using native html table structure to avoid canvas/grid scaling issues */}
-              <div ref={calendarRef} className="p-4 bg-white border border-slate-150 rounded-lg">
+              <div ref={calendarRef} className="p-2 sm:p-4 bg-white border border-slate-150 rounded-lg w-full overflow-x-auto lg:overflow-x-visible">
                 <div className="text-center mb-4">
                   <h2 className="text-base font-bold text-[#2c3e50] uppercase tracking-wider">
                     ГРАФІК ВІДПУСТОК НА {selectedYear} РІК
@@ -1126,16 +1126,16 @@ export default function App() {
                   </p>
                 </div>
 
-                <table className="vacations-table text-[11px] w-full font-sans">
+                <table className="vacations-table text-[10px] sm:text-[11px] w-full font-sans table-fixed min-w-[660px] lg:min-w-0">
                   <thead>
                     <tr>
-                      <th className="py-2.5 px-1 bg-[#2c3e50] text-white text-center font-bold border border-slate-300 w-10">
+                      <th className="py-2 px-0.5 bg-[#2c3e50] text-white text-center font-bold border border-slate-300 w-8 sm:w-10">
                         День
                       </th>
                       {monthNames.map((name, idx) => (
                         <th 
                           key={idx} 
-                          className="py-2 px-0.5 bg-[#2c3e50] text-white text-center font-bold border border-slate-300 text-[9px] uppercase tracking-tighter"
+                          className="py-2 px-0.5 bg-[#2c3e50] text-white text-center font-bold border border-slate-300 text-[8px] sm:text-[9px] uppercase tracking-tighter"
                         >
                           {name}
                         </th>
@@ -1148,7 +1148,7 @@ export default function App() {
                       return (
                         <tr key={day}>
                           {/* Day Column */}
-                          <td className="bg-slate-100 font-bold text-[#2c3e50] border border-slate-200 text-center text-xs">
+                          <td className="bg-slate-100 font-bold text-[#2c3e50] border border-slate-200 text-center text-[10px] sm:text-xs">
                             {day}
                           </td>
 
@@ -1173,10 +1173,10 @@ export default function App() {
                             return (
                               <td
                                 key={monthIdx}
-                                className={`relative p-1 border border-slate-200 min-h-[46px] group ${weekend ? "weekend-cell" : "bg-white"}`}
+                                className={`relative p-0.5 sm:p-1 border border-slate-200 min-h-[38px] sm:min-h-[46px] group ${weekend ? "weekend-cell" : "bg-white"}`}
                               >
                                 {/* Date indicator top row */}
-                                <div className="flex items-center justify-between text-[8px] text-slate-400/80 mb-1 select-none font-medium">
+                                <div className="flex items-center justify-between text-[7px] sm:text-[8px] text-slate-400/80 mb-0.5 select-none font-medium">
                                   <span>{day}</span>
                                   <span className={weekend ? "text-rose-400 font-bold" : "text-slate-400"}>
                                     {dayOfWeekLetter}
@@ -1184,7 +1184,7 @@ export default function App() {
                                 </div>
 
                                 {/* Vacation circular badges wrapper */}
-                                <div className="text-center min-h-[18px]">
+                                <div className="text-center min-h-[16px] flex flex-wrap items-center justify-center gap-0.5">
                                   {activeVacations && activeVacations.length > 0 ? (
                                     activeVacations.map(({ emp, vac }, vIdx) => {
                                       const isUsed = vac.status === "Використана";
